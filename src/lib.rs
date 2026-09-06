@@ -19,5 +19,6 @@ pub mod register;
 
 pub use elision::FrenchElisionFilter;
 pub use register::register_all;
-pub use stem::{FrenchLightStemFilter, FrenchMinimalStemFilter};
+pub use stem::FrenchLightStemFilter;
+pub use stem::FrenchMinimalStemFilter;
 pub use stop::FrenchStopFilter;

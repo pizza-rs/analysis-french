@@ -3,7 +3,8 @@
 use alloc::borrow::Cow;
 use alloc::string::String;
 use alloc::vec::Vec;
-use pizza_engine::analysis::{Token, TokenFilter};
+use pizza_engine::analysis::Token;
+use pizza_engine::analysis::TokenFilter;
 
 /// French light stemmer — removes plural, feminine, and adverbial suffixes.
 #[derive(Clone, Debug, Default)]
@@ -91,15 +92,36 @@ fn stem_french_light(word: &str) -> String {
 /// Normalize accents throughout the word (Lucene's norm() function).
 fn norm_french(s: &mut String) {
     let mut changed = false;
-    let normalized: String = s.chars().map(|c| match c {
-        'à' | 'â' => { changed = true; 'a' }
-        'ç' => { changed = true; 'c' }
-        'è' | 'é' | 'ê' | 'ë' => { changed = true; 'e' }
-        'î' | 'ï' => { changed = true; 'i' }
-        'ô' => { changed = true; 'o' }
-        'ù' | 'û' | 'ü' => { changed = true; 'u' }
-        _ => c,
-    }).collect();
+    let normalized: String = s
+        .chars()
+        .map(|c| match c {
+            'à' | 'â' => {
+                changed = true;
+                'a'
+            }
+            'ç' => {
+                changed = true;
+                'c'
+            }
+            'è' | 'é' | 'ê' | 'ë' => {
+                changed = true;
+                'e'
+            }
+            'î' | 'ï' => {
+                changed = true;
+                'i'
+            }
+            'ô' => {
+                changed = true;
+                'o'
+            }
+            'ù' | 'û' | 'ü' => {
+                changed = true;
+                'u'
+            }
+            _ => c,
+        })
+        .collect();
     if changed {
         *s = normalized;
     }

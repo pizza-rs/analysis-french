@@ -4,12 +4,17 @@ use alloc::boxed::Box;
 use alloc::vec;
 use alloc::vec::Vec;
 
-use pizza_engine::analysis::{
-    Analyzer, AnalysisFactory, LowercaseNormalizer, Normalizer, StandardTokenizer, TokenFilter,
-    Tokenizer,
-};
+use pizza_engine::analysis::AnalysisFactory;
+use pizza_engine::analysis::Analyzer;
+use pizza_engine::analysis::LowercaseNormalizer;
+use pizza_engine::analysis::Normalizer;
+use pizza_engine::analysis::StandardTokenizer;
+use pizza_engine::analysis::TokenFilter;
+use pizza_engine::analysis::Tokenizer;
 
-use crate::{FrenchElisionFilter, FrenchLightStemFilter, FrenchStopFilter};
+use crate::FrenchElisionFilter;
+use crate::FrenchLightStemFilter;
+use crate::FrenchStopFilter;
 
 /// Register French token filters and the `"french"` analyzer.
 pub fn register_all(factory: &mut AnalysisFactory) {

@@ -4,7 +4,8 @@ use alloc::borrow::Cow;
 use alloc::string::String;
 use alloc::vec::Vec;
 use hashbrown::HashSet;
-use pizza_engine::analysis::{Token, TokenFilter};
+use pizza_engine::analysis::Token;
+use pizza_engine::analysis::TokenFilter;
 
 /// Default French elision articles.
 const FRENCH_ARTICLES: &[&str] = &[

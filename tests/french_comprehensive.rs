@@ -1,7 +1,9 @@
 //! Comprehensive tests for pizza-analysis-french.
 
 use pizza_analysis_french::*;
-use pizza_engine::analysis::{AnalysisFactory, Token, TokenFilter};
+use pizza_engine::analysis::AnalysisFactory;
+use pizza_engine::analysis::Token;
+use pizza_engine::analysis::TokenFilter;
 
 fn make_token(term: &str) -> Token<'_> {
     Token::new(term, 0, term.len() as u32, 0)
@@ -165,7 +167,9 @@ fn stop_construction() {
 #[test]
 fn stop_filters_common_words() {
     let f = FrenchStopFilter::new();
-    let stop_words = ["le", "la", "les", "de", "des", "du", "un", "une", "et", "en", "que", "au"];
+    let stop_words = [
+        "le", "la", "les", "de", "des", "du", "un", "une", "et", "en", "que", "au",
+    ];
     for word in &stop_words {
         let mut token = make_token(word);
         let (deleted, _) = f.filter(&mut token);
